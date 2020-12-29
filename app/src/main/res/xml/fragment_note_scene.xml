@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end"
+        motion:constraintSetStart="@id/start"
+        motion:duration="1000">
+        <KeyFrameSet>
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="10"
+                motion:motionTarget="@+id/book" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="10"
+                motion:motionTarget="@+id/attach" />
+            <KeyAttribute
+                android:alpha="0"
+                motion:framePosition="10"
+                motion:motionTarget="@+id/more" />
+            <KeyAttribute
+                android:alpha="1"
+                motion:framePosition="10"
+                motion:motionTarget="@+id/start" />
+        </KeyFrameSet>
+        <OnClick motion:targetId="@+id/titleClick" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/titleClick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="@+id/title"
+            motion:layout_constraintEnd_toEndOf="@+id/title"
+            motion:layout_constraintStart_toStartOf="@+id/title"
+            motion:layout_constraintTop_toTopOf="@+id/title" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:rotation="90"
+            motion:layout_constraintBottom_toTopOf="@+id/divider"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintVertical_bias="0.15" />
+        <Constraint
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="157dp"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@+id/book"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="@+id/attach"
+            motion:layout_constraintEnd_toStartOf="@+id/attach"
+            motion:layout_constraintTop_toTopOf="@+id/attach" />
+        <Constraint
+            android:id="@+id/attach"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="@+id/more"
+            motion:layout_constraintEnd_toStartOf="@+id/more"
+            motion:layout_constraintTop_toTopOf="@+id/more" />
+        <Constraint
+            android:id="@+id/more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:visibility="invisible"
+            motion:layout_constraintBottom_toBottomOf="@+id/back"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/back" />
+        <Constraint
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:visibility="visible"
+            motion:layout_constraintBottom_toBottomOf="@+id/back"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/back" />
+        <Constraint
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            motion:layout_constraintStart_toStartOf="@+id/back"
+            motion:layout_constraintTop_toBottomOf="@+id/back" />
+        <Constraint
+            android:id="@+id/folders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            motion:layout_constraintBottom_toTopOf="@+id/divider"
+            android:alpha="1"
+            motion:layout_constraintStart_toStartOf="@+id/title" />
+    </ConstraintSet>
+    <Transition
+        motion:constraintSetStart="@+id/end"
+        motion:constraintSetEnd="@+id/start" >
+        <OnClick motion:targetId="@+id/back" />
+    </Transition>
+</MotionScene>
